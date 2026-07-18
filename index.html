@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Büfe · 7/24</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #FFF1B5;  /* Buttermilk */
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: white;
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 20px 40px rgba(67, 48, 46, 0.12), 0 8px 20px rgba(67, 48, 46, 0.06);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: 1px solid #C1DBE8;  /* Pastel Blue */
+    }
+
+    .card-header {
+      background: #43302E;  /* Old Burgundy */
+      padding: 1.6rem 2rem 1rem 2rem;
+      color: white;
+      border-bottom: 2px solid #C1DBE8;
+    }
+
+    .business-name {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .business-name h1 {
+      font-weight: 600;
+      font-size: 2.2rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #FFF1B5;  /* Buttermilk for accent */
+    }
+
+    .business-name h1 small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      background: #5a4140;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      color: #FFF1B5;
+      letter-spacing: 0.2px;
+    }
+
+    .badge-247 {
+      background: #FFF1B5;  /* Buttermilk */
+      color: #43302E;       /* Old Burgundy */
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 1.8rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #5a4140;
+      padding-bottom: 0.6rem;
+    }
+
+    .nav-tabs span {
+      color: #C1DBE8;  /* Pastel Blue */
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: default;
+      transition: 0.1s;
+      letter-spacing: 0.2px;
+      opacity: 0.8;
+    }
+
+    .nav-tabs span:first-child {
+      color: #FFF1B5;
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    .nav-tabs span i {
+      margin-right: 6px;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .see-all {
+      text-align: right;
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+      color: #FFF1B5;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      cursor: default;
+    }
+
+    .see-all i {
+      font-size: 0.7rem;
+      margin-left: 4px;
+    }
+
+    /* main content */
+    .content {
+      padding: 1.8rem 2rem 2rem 2rem;
+      background: white;
+    }
+
+    .from-business {
+      background: #FFF1B5;  /* Buttermilk */
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin-bottom: 1.8rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #43302E;
+      border: 1px solid #C1DBE8;
+    }
+
+    .from-business i {
+      margin-right: 8px;
+      color: #43302E;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .info-icon {
+      width: 28px;
+      color: #43302E;  /* Old Burgundy */
+      font-size: 1.1rem;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .info-text {
+      flex: 1;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    .info-text .label {
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .info-text .address-line {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .info-text .phone {
+      font-weight: 500;
+      color: #43302E;
+    }
+
+    .info-text .link-like {
+      color: #43302E;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: default;
+      opacity: 0.8;
+    }
+
+    .hours-section {
+      background: #FFF1B5;  /* Buttermilk */
+      border-radius: 24px;
+      padding: 1.2rem 1.5rem 1rem 1.5rem;
+      margin: 1.8rem 0 1.2rem 0;
+      border: 1px solid #C1DBE8;
+    }
+
+    .hours-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+
+    .hours-header h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #43302E;
+    }
+
+    .hours-header h3 i {
+      color: #43302E;
+    }
+
+    .hours-header .status {
+      background: #C1DBE8;  /* Pastel Blue */
+      color: #43302E;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .hours-header .status i {
+      margin-right: 4px;
+    }
+
+    .hours-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.2rem 1rem;
+      font-size: 0.9rem;
+      color: #2c2c2c;
+      margin-top: 0.4rem;
+    }
+
+    .hours-table .day {
+      font-weight: 400;
+      color: #43302E;
+    }
+
+    .hours-table .time {
+      font-weight: 500;
+      text-align: right;
+      color: #43302E;
+    }
+
+    .popular-times {
+      margin-top: 1.5rem;
+      background: white;
+      border-radius: 40px;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #C1DBE8;
+    }
+
+    .popular-times .label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #43302E;
+    }
+
+    .popular-times .label i {
+      margin-right: 6px;
+      color: #43302E;
+    }
+
+    .popular-times .badge-busy {
+      background: #FFF1B5;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #43302E;
+    }
+
+    .popular-times .no-wait {
+      color: #43302E;
+      background: #C1DBE8;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .chart-hours {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .chart-hours span {
+      font-size: 0.7rem;
+      color: #43302E;
+      background: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      border: 1px solid #C1DBE8;
+    }
+
+    .chart-hours .active {
+      background: #43302E;  /* Old Burgundy */
+      color: #FFF1B5;
+      font-weight: 500;
+      border-color: #43302E;
+    }
+
+    .rating-box {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      background: #FFF1B5;
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      margin: 1.2rem 0 0.8rem 0;
+      border: 1px solid #C1DBE8;
+    }
+
+    .rating-box .stars {
+      color: #43302E;
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .rating-box .score {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-right: 4px;
+      color: #43302E;
+    }
+
+    .rating-box .reviews {
+      color: #43302E;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .rating-box .price {
+      background: #C1DBE8;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #43302E;
+      margin-left: auto;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      background: #43302E;  /* Old Burgundy */
+      color: #FFF1B5;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: default;
+      transition: 0.1s;
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #C1DBE8;
+      color: #43302E;
+    }
+
+    .btn i {
+      font-size: 0.9rem;
+    }
+
+    .btn-outline i {
+      color: #43302E;
+    }
+
+    .map-marker {
+      color: #43302E;
+    }
+
+    .footer-small {
+      margin-top: 1.8rem;
+      font-size: 0.75rem;
+      color: #43302E;
+      border-top: 1px solid #C1DBE8;
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      opacity: 0.8;
+    }
+
+    .footer-small span i {
+      margin-right: 6px;
+      color: #43302E;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .business-name h1 {
+        font-size: 1.8rem;
+        flex-wrap: wrap;
+      }
+      .hours-table {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+      }
+      .hours-table .time {
+        text-align: left;
+        padding-left: 0.8rem;
+      }
+      .rating-box .price {
+        margin-left: 0;
+      }
+      .content {
+        padding: 1.5rem;
+      }
+      .card-header {
+        padding: 1.2rem 1.5rem 0.8rem 1.5rem;
+      }
+      .info-row {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <!-- header: name + 7/24 -->
+  <div class="card-header">
+    <div class="business-name">
+      <h1>
+        Star Büfe
+        <small>⭐ 3.4</small>
+      </h1>
+      <span class="badge-247"><i class="fas fa-clock"></i> 7/24</span>
+    </div>
+
+    <!-- navigation tabs -->
+    <div class="nav-tabs">
+      <span><i class="fas fa-th-list"></i> Overview</span>
+      <span><i class="fas fa-utensils"></i> Menu</span>
+      <span><i class="fas fa-star"></i> Reviews</span>
+      <span><i class="fas fa-camera"></i> Photos</span>
+      <span><i class="fas fa-sync-alt"></i> Updates</span>
+    </div>
+    <div class="see-all">
+      See all reviews <i class="fas fa-chevron-right"></i>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="content">
+    <!-- from business -->
+    <div class="from-business">
+      <i class="fas fa-store-alt"></i> Star Büfe · Büfemiz 7/24 hizmet vermektedir.
+    </div>
+
+    <!-- info grid: address, phone, location -->
+    <div class="info-grid">
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-map-pin"></i></div>
+        <div class="info-text">
+          <span class="address-line">Müeyyetzade, Serdar-ı Ekrem Cd. 2/ A, 34425 Beyoğlu/İstanbul, Türkiye</span>
+          <span class="address-line" style="font-size:0.85rem; color:#43302E; margin-top:2px; opacity:0.7;">
+            <i class="fas fa-map-marker-alt" style="color:#43302E;"></i> 2XGF+CW Beyoğlu, İstanbul
+          </span>
+          <span class="link-like" style="font-size:0.8rem; display:inline-block; margin-top:3px;">
+            <i class="fas fa-pen"></i> Update location
+          </span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="info-text">
+          <span class="phone"><i class="fas fa-phone" style="color:#43302E; margin-right:6px;"></i> +90 536 462 56 23</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- hours + popular times -->
+    <div class="hours-section">
+      <div class="hours-header">
+        <h3><i class="far fa-calendar-alt" style="color:#43302E; margin-right:8px;"></i> Hours</h3>
+        <span class="status"><i class="fas fa-circle" style="font-size:0.6rem; color:#43302E;"></i> Open · Closes 04:00</span>
+      </div>
+      <div class="hours-table">
+        <span class="day">Saturday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Sunday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Monday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Tuesday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Wednesday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Thursday</span><span class="time">06:00 – 04:00</span>
+        <span class="day">Friday</span><span class="time">06:00 – 04:00</span>
+      </div>
+      <div style="font-size:0.8rem; color:#43302E; margin-top:0.5rem; text-align:right; opacity:0.7;">
+        <i class="fas fa-pencil-alt"></i> Suggest an edit
+      </div>
+
+      <!-- popular times -->
+      <div class="popular-times">
+        <span class="label"><i class="fas fa-chart-line"></i> Popular times · Saturday</span>
+        <span class="badge-busy"><i class="fas fa-users"></i> Usually a little busy</span>
+        <span class="no-wait"><i class="fas fa-check-circle"></i> 22:00 · No wait</span>
+      </div>
+      <!-- mini chart (simulated) -->
+      <div class="chart-hours">
+        <span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span class="active">21</span><span>00</span><span>03</span>
+        <span style="margin-left:auto; font-size:0.7rem; background:transparent; color:#43302E; border:none;"><i class="fas fa-clock"></i> no wait</span>
+      </div>
+    </div>
+
+    <!-- rating & price -->
+    <div class="rating-box">
+      <div>
+        <span class="score">3.4</span>
+        <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></span>
+        <span class="reviews"> (247)</span>
+      </div>
+      <span class="price"><i class="fas fa-lira-sign"></i>600–800</span>
+      <span style="margin-left:0.5rem; font-size:0.8rem; background:#C1DBE8; padding:0.2rem 1rem; border-radius:40px; color:#43302E;">
+        Buffet restaurant
+      </span>
+    </div>
+
+    <!-- action buttons: directions, call, share -->
+    <div class="action-buttons">
+      <span class="btn"><i class="fas fa-directions"></i> Directions</span>
+      <span class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</span>
+      <span class="btn btn-outline"><i class="fas fa-share-alt"></i> Share</span>
+    </div>
+
+    <!-- nearby / context (from image) -->
+    <div style="margin-top:1.8rem; background:#FFF1B5; border-radius:20px; padding:0.8rem 1.2rem; border:1px solid #C1DBE8; display: flex; flex-wrap: wrap; gap:0.6rem 1.2rem; font-size:0.85rem; color:#43302E;">
+      <span><i class="fas fa-monument" style="color:#43302E;"></i> Galata Kulesi</span>
+      <span><i class="fas fa-cat" style="color:#43302E;"></i> Cat Museum</span>
+      <span><i class="fas fa-utensils" style="color:#43302E;"></i> F&B Culture</span>
+      <span><i class="fas fa-school" style="color:#43302E;"></i> Özel Saint Fransız Lisesi</span>
+      <span><i class="fas fa-mosque" style="color:#43302E;"></i> Galip Dede Cd</span>
+    </div>
+
+    <!-- footer / meta -->
+    <div class="footer-small">
+      <span><i class="fas fa-store"></i> Star Büfe · Beyoğlu</span>
+      <span><i class="fas fa-clock"></i> 7/24 · Open now</span>
+      <span><i class="fas fa-phone"></i> +90 536 462 56 23</span>
+    </div>
+  </div>
+  <!-- end content -->
+</div>
+<!-- end card -->
+</body>
+</html>
