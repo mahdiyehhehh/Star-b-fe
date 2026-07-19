@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Star Büfe · 7/24</title>
+  <title>Star Büfe · 7/24 · Beyoğlu</title>
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -24,7 +24,7 @@
     }
 
     .card {
-      max-width: 820px;
+      max-width: 880px;
       width: 100%;
       background: white;
       border-radius: 36px 36px 28px 28px;
@@ -132,6 +132,27 @@
       background: white;
     }
 
+    /* “Ilumina tus días” – subtle inspo line */
+    .inspo-tag {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: #43302E;
+      opacity: 0.5;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px dashed #C1DBE8;
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .inspo-tag i {
+      color: #C1DBE8;
+      font-size: 0.7rem;
+    }
+
     .from-business {
       background: #FFF1B5;  /* Buttermilk */
       padding: 0.8rem 1.2rem;
@@ -175,11 +196,6 @@
       flex: 1;
       color: #222;
       line-height: 1.5;
-    }
-
-    .info-text .label {
-      font-weight: 600;
-      margin-right: 8px;
     }
 
     .info-text .address-line {
@@ -403,10 +419,6 @@
       color: #43302E;
     }
 
-    .map-marker {
-      color: #43302E;
-    }
-
     .footer-small {
       margin-top: 1.8rem;
       font-size: 0.75rem;
@@ -480,6 +492,13 @@
 
   <!-- content -->
   <div class="content">
+    <!-- subtle inspo line: "Ilumina tus días" + "Sobre nosotros" vibe -->
+    <div class="inspo-tag">
+      <i class="fas fa-sun"></i> Ilumina tus días · <span style="font-weight:400; opacity:0.7;">Star Büfe</span>
+      <i class="fas fa-circle" style="font-size:0.3rem; opacity:0.4;"></i>
+      <span style="font-weight:300; opacity:0.6;">Sobre nosotros</span>
+    </div>
+
     <!-- from business -->
     <div class="from-business">
       <i class="fas fa-store-alt"></i> Star Büfe · Büfemiz 7/24 hizmet vermektedir.
@@ -559,13 +578,16 @@
       <span class="btn btn-outline"><i class="fas fa-share-alt"></i> Share</span>
     </div>
 
-    <!-- nearby / context (from image) -->
-    <div style="margin-top:1.8rem; background:#FFF1B5; border-radius:20px; padding:0.8rem 1.2rem; border:1px solid #C1DBE8; display: flex; flex-wrap: wrap; gap:0.6rem 1.2rem; font-size:0.85rem; color:#43302E;">
+    <!-- nearby / context (from image) + "Ver productos" subtle nod -->
+    <div style="margin-top:1.8rem; background:#FFF1B5; border-radius:20px; padding:0.8rem 1.2rem; border:1px solid #C1DBE8; display: flex; flex-wrap: wrap; gap:0.6rem 1.2rem; font-size:0.85rem; color:#43302E; align-items:center;">
       <span><i class="fas fa-monument" style="color:#43302E;"></i> Galata Kulesi</span>
       <span><i class="fas fa-cat" style="color:#43302E;"></i> Cat Museum</span>
       <span><i class="fas fa-utensils" style="color:#43302E;"></i> F&B Culture</span>
       <span><i class="fas fa-school" style="color:#43302E;"></i> Özel Saint Fransız Lisesi</span>
       <span><i class="fas fa-mosque" style="color:#43302E;"></i> Galip Dede Cd</span>
+      <span style="margin-left:auto; background:#43302E; color:#FFF1B5; padding:0.2rem 1rem; border-radius:30px; font-size:0.75rem; font-weight:500;">
+        <i class="fas fa-eye"></i> Ver productos
+      </span>
     </div>
 
     <!-- footer / meta -->
